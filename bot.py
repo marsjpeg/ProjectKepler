@@ -218,7 +218,7 @@ def capitalize_first_character(input_string):
 
 #running the actual bot
 def run_discord_bot():
-    TOKEN = "MTEwOTY3NDY2NzcwNDMyNDEzNg.GqYP5U.C7edEVXGYdlFabSGVMkOCs44KymRcH_X2O8RRk"
+    TOKEN = "TOKEN_KEY_HERE"
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
@@ -346,7 +346,7 @@ def run_discord_bot():
         
         elif user_message == "k!spirit" or user_message == "pk!spirit":
             embed = create_embed('Mars Images', "Photos taken by the Spirit Rover on Mars, as well as its information.")
-            mars_photo = get_random_photo('https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/photos?api_key=q2XOEZwSdDnlNJMAm1ILf5DCBokzDTw5AmNvki2T&sol=1000')
+            mars_photo = get_random_photo('https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/photos?api_key=API_HERE')
             embed.set_image(url = mars_photo['img_src'])
             embed.add_field(name = f"{mars_photo['rover']['name']} Launch Date", value = mars_photo['rover']['launch_date'], inline = True)
             embed.add_field(name = "Rover", value = mars_photo['rover']['name'], inline = True)
@@ -361,7 +361,7 @@ def run_discord_bot():
                 date = user_message[7:]
             else:
                 date = user_message[8:]
-            link ='https://api.nasa.gov/planetary/apod?api_key=q2XOEZwSdDnlNJMAm1ILf5DCBokzDTw5AmNvki2T&date='
+            link ='https://api.nasa.gov/planetary/apod?api_key=API_HERE&date='
             hdurl, date, title = get_apod(link)
             embed = create_embed("Astronomy Picture of the Day (APOD)", title)
             embed.add_field(name = 'Date', value = date, inline = True)
@@ -378,7 +378,7 @@ def run_discord_bot():
             send_embed(message.channel, embed) if user_message == 'k!in space' else send_embed(message.author, embed)
 
         elif user_message == "k!asteroid" or user_message == "pk!asteroid":
-            asteroid_info = asteroid("https://api.nasa.gov/neo/rest/v1/feed?start_date=2020-09-07&api_key=q2XOEZwSdDnlNJMAm1ILf5DCBokzDTw5AmNvki2T")
+            asteroid_info = asteroid("https://api.nasa.gov/neo/rest/v1/feed?start_date=2020-09-07&api_key=API_HERE")
             embed = create_embed("Near-Earth Astroids", "Track a random astroid.")
             embed.add_field(name = "Name", value = asteroid_info["name"], inline = True)
             embed.add_field(name = "Max Diameter", value = f'{asteroid_info["max_diameter_miles"]} miles' , inline = True)
@@ -390,7 +390,7 @@ def run_discord_bot():
             send_embed(message.channel, embed) if user_message == "k!asteroid" else send_embed(message.author, embed)
 
         elif user_message == "k!curiosity" or user_message == "pk!curiosity":
-            data = get_curious("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=q2XOEZwSdDnlNJMAm1ILf5DCBokzDTw5AmNvki2T&sol=1000")
+            data = get_curious("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=API_HERE")
             embed = create_embed("Curiosity Rover", "Photos taken by the *Curiosity* rover on Mars, along with information.")
             embed.set_image(url = data['img_src'])
             embed.add_field(name = f"{data['rover']['name']} Launch Date", value = data['rover']['launch_date'], inline = True)
@@ -435,7 +435,7 @@ def run_discord_bot():
             year = date[:4]
             month = date[5:7]
             day = date[8:]
-            random_image, random_caption, random_date, lat, lon = epic(f"https://api.nasa.gov/EPIC/api/natural/date/{date}?api_key=q2XOEZwSdDnlNJMAm1ILf5DCBokzDTw5AmNvki2T")
+            random_image, random_caption, random_date, lat, lon = epic(f"https://api.nasa.gov/EPIC/api/natural/date/{date}?api_key=API_HERE")
             lat = round(int(lat), 2)
             lon = round(int(lon), 2)
             embed = create_embed("Earth Polychromatic Imaging Camera (EPIC)", random_caption)
@@ -447,7 +447,7 @@ def run_discord_bot():
             send_embed(message.channel, embed) if user_message.startswith('k!epic') else send_embed(message.author, embed)
 
         elif user_message == "k!opportunity" or user_message == "pk!opportunity":
-            data = get_opportunity("https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?api_key=q2XOEZwSdDnlNJMAm1ILf5DCBokzDTw5AmNvki2T&sol=1000")
+            data = get_opportunity("https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?api_key=API_HERE")
             embed = create_embed("Opportunity Rover", "Photos taken by the *Opportunity* rover on Mars, along with information.")
             embed.set_image(url = data['img_src'])
             embed.add_field(name = f"{data['rover']['name']} Launch Date", value = data['rover']['launch_date'], inline = True)
